@@ -192,56 +192,70 @@
         box-shadow: 0 20px 70px rgba(0,0,0,0.15);
     }
 
-    /* 老师基本信息区 */
+    /* 老师头部区域 - 修改布局 */
     .teacher-header {
         background: var(--gradient);
         padding: 50px;
         display: grid;
-        grid-template-columns: 280px 1fr;
+        /* 左侧固定宽度放照片和信息，右侧自适应放简介 */
+        grid-template-columns: 320px 1fr; 
         gap: 40px;
-        align-items: center;
+        align-items: start;
+    }
+
+    /* 左侧列：照片 + 个人信息 */
+    .teacher-left-col {
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
     }
 
     .teacher-photo {
-        width: 280px;
-        height: 350px;
+        width: 100%;
+        height: 380px;
         object-fit: cover;
         border-radius: 20px;
         box-shadow: 0 10px 40px rgba(0,0,0,0.3);
         border: 5px solid rgba(255,255,255,0.2);
     }
 
-    .teacher-info h3 {
-        font-size: 2.2rem;
-        color: var(--white);
-        margin-bottom: 25px;
-        font-weight: 700;
-    }
-
+    /* 个人信息表格样式调整 */
     .info-grid {
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 20px;
+        grid-template-columns: 1fr; /* 单列显示 */
+        gap: 15px;
+        background: rgba(255,255,255,0.1);
+        padding: 20px;
+        border-radius: 15px;
+        backdrop-filter: blur(10px);
     }
 
     .info-item {
-        background: rgba(255,255,255,0.1);
-        padding: 18px 25px;
-        border-radius: 12px;
-        backdrop-filter: blur(10px);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+        padding-bottom: 8px;
+    }
+
+    .info-item:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
     }
 
     .info-label {
         font-size: 0.85rem;
         color: rgba(255,255,255,0.7);
-        margin-bottom: 6px;
-        display: block;
+        white-space: nowrap;
+        margin-right: 10px;
     }
 
     .info-value {
-        font-size: 1rem;
+        font-size: 0.95rem;
         color: var(--white);
-        font-weight: 600;
+        font-weight: 500;
+        text-align: right;
+        word-break: break-all;
     }
 
     .info-value a {
@@ -252,22 +266,39 @@
         text-decoration: underline;
     }
 
-    /* 老师内容区 */
-    .teacher-body {
-        padding: 50px;
+    /* 右侧列：姓名 + 简介 */
+    .teacher-right-col {
+        color: var(--white);
     }
 
-    /* 个人简介 */
-    .bio-section {
-        margin-bottom: 50px;
-        background: var(--white);
-        padding: 30px;
-        border-radius: 20px;
-        box-shadow: 0 5px 25px rgba(0,0,0,0.08);
+    .teacher-name {
+        font-size: 2.5rem;
+        margin-bottom: 30px;
+        font-weight: 700;
+        border-bottom: 2px solid rgba(255,255,255,0.2);
+        padding-bottom: 15px;
+        display: inline-block;
+    }
+
+    /* 简介区域样式调整 (在 Header 内) */
+    .header-bio {
+        background: rgba(255,255,255,0.05);
+        padding: 25px;
+        border-radius: 15px;
+        margin-top: 10px;
+    }
+
+    .header-bio h4 {
+        font-size: 1.4rem;
+        margin-bottom: 15px;
+        color: var(--accent-color);
+        display: flex;
+        align-items: center;
+        gap: 10px;
     }
 
     .bio-text {
-        color: var(--text-dark);
+        color: rgba(255,255,255,0.9);
         line-height: 1.8;
         font-size: 1rem;
         text-align: justify;
@@ -279,6 +310,12 @@
 
     .bio-text p:last-child {
         margin-bottom: 0;
+    }
+
+    /* 老师内容区 (研究方向 + 论文) */
+    .teacher-body {
+        padding: 50px;
+        background: var(--white);
     }
 
     /* 研究方向 */
@@ -312,10 +349,10 @@
     }
 
     .direction-card {
-        background: var(--white);
+        background: var(--bg-light);
         border-radius: 20px;
         overflow: hidden;
-        box-shadow: 0 5px 25px rgba(0,0,0,0.08);
+        box-shadow: 0 5px 25px rgba(0,0,0,0.05);
         transition: 0.3s;
         display: grid;
         grid-template-columns: 350px 1fr;
@@ -323,7 +360,7 @@
 
     .direction-card:hover {
         transform: translateX(10px);
-        box-shadow: 0 10px 40px rgba(0,0,0,0.12);
+        box-shadow: 0 10px 40px rgba(0,0,0,0.1);
     }
 
     .direction-img {
@@ -378,20 +415,21 @@
     }
 
     .tag {
-        background: var(--bg-light);
+        background: var(--white);
         color: var(--primary-color);
         padding: 5px 12px;
         border-radius: 15px;
         font-size: 0.8rem;
         font-weight: 500;
+        border: 1px solid #e2e8f0;
     }
 
     /* 代表论文 */
     .papers-section {
-        background: var(--white);
+        background: var(--bg-light);
         padding: 40px;
         border-radius: 20px;
-        box-shadow: 0 5px 25px rgba(0,0,0,0.08);
+        box-shadow: 0 5px 25px rgba(0,0,0,0.05);
     }
 
     .paper-list {
@@ -402,7 +440,7 @@
 
     .paper-item {
         padding: 18px 25px;
-        background: var(--bg-light);
+        background: var(--white);
         border-radius: 12px;
         display: flex;
         align-items: flex-start;
@@ -411,7 +449,7 @@
     }
 
     .paper-item:hover {
-        background: #e2e8f0;
+        background: #f8fafc;
         transform: translateX(5px);
     }
 
@@ -535,9 +573,32 @@
             grid-template-columns: 1fr;
             text-align: center;
         }
-        .teacher-photo {
-            margin: 0 auto;
+        
+        .teacher-left-col {
+            align-items: center;
+            margin-bottom: 30px;
         }
+
+        .teacher-photo {
+            width: 250px;
+            height: 300px;
+        }
+
+        .info-grid {
+            width: 100%;
+            max-width: 500px;
+            text-align: left;
+        }
+
+        .teacher-right-col {
+            text-align: left;
+        }
+
+        .teacher-name {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
         .direction-card {
             grid-template-columns: 1fr;
         }
@@ -552,11 +613,18 @@
         .hero h2 { font-size: 1.2rem; }
         .nav-links { display: none; }
         .teacher-header { padding: 30px; }
-        .teacher-photo { width: 200px; height: 250px; }
         .teacher-body { padding: 30px; }
-        .info-grid { grid-template-columns: 1fr; }
         .section-title { font-size: 2rem; }
         .direction-content { padding: 20px; }
+        
+        .info-item {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 5px;
+        }
+        .info-value {
+            text-align: left;
+        }
     }
 
     /* ==================== 平滑滚动 ==================== */
@@ -616,9 +684,9 @@
             <!-- ============ 老师 1 ============ -->
             <div class="teacher-card">
                 <div class="teacher-header">
-                    <img src="images/teacher1/photo.jpg" alt="刘博教授" class="teacher-photo">
-                    <div class="teacher-info">
-                        <h3>刘博 教授</h3>
+                    <!-- 左侧：照片 + 个人信息 -->
+                    <div class="teacher-left-col">
+                        <img src="images/teacher1/photo.jpg" alt="刘博教授" class="teacher-photo">
                         <div class="info-grid">
                             <div class="info-item">
                                 <span class="info-label">性别</span>
@@ -644,31 +712,31 @@
                                 <span class="info-label">所在单位</span>
                                 <span class="info-value">计算机与信息学院（人工智能学院）</span>
                             </div>
-                            <div class="info-item" style="grid-column: 1 / -1;">
+                            <div class="info-item">
                                 <span class="info-label">电子邮箱</span>
                                 <span class="info-value"><a href="mailto:boliu@hfut.edu.cn">boliu@hfut.edu.cn</a></span>
                             </div>
-                            <div class="info-item" style="grid-column: 1 / -1;">
+                            <div class="info-item">
                                 <span class="info-label">研究场所</span>
                                 <span class="info-value">计算机学院大楼 A 座 501 室</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 右侧：姓名 + 个人简介 -->
+                    <div class="teacher-right-col">
+                        <h3 class="teacher-name">刘博 教授</h3>
+                        <div class="header-bio">
+                            <h4>👤 个人简介</h4>
+                            <div class="bio-text">
+                                <p>刘博，教授，博士生导师，毕业于美国 Rutgers University，获博士学位。现任计算机与信息学院（人工智能学院）教授，时空智能实验室负责人。长期从事时空数据挖掘、城市计算及人工智能领域的研究工作，在 AAAI、KDD、WWW 等国际顶级会议和期刊上发表学术论文 50 余篇。</p>
+                                <p>主持国家自然科学基金重点项目、国家重点研发计划课题等多项国家级科研项目。荣获教育部自然科学一等奖、省科技进步一等奖等多项荣誉。担任多个国际期刊编委及顶级会议领域主席，致力于推动时空智能技术在智慧城市、智能交通等领域的落地应用。</p>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <div class="teacher-body">
-                    <!-- 个人简介 -->
-                    <div class="bio-section">
-                        <div class="section-header">
-                            <span class="section-icon">👤</span>
-                            <h4>个人简介</h4>
-                        </div>
-                        <div class="bio-text">
-                            <p>刘博，教授，博士生导师，毕业于美国 Rutgers University，获博士学位。现任计算机与信息学院（人工智能学院）教授，时空智能实验室负责人。长期从事时空数据挖掘、城市计算及人工智能领域的研究工作，在 AAAI、KDD、WWW 等国际顶级会议和期刊上发表学术论文 50 余篇。</p>
-                            <p>主持国家自然科学基金重点项目、国家重点研发计划课题等多项国家级科研项目。荣获教育部自然科学一等奖、省科技进步一等奖等多项荣誉。担任多个国际期刊编委及顶级会议领域主席，致力于推动时空智能技术在智慧城市、智能交通等领域的落地应用。</p>
-                        </div>
-                    </div>
-
                     <!-- 研究方向 -->
                     <div class="research-section">
                         <div class="section-header">
@@ -782,9 +850,9 @@
             <!-- ============ 老师 2 ============ -->
             <div class="teacher-card">
                 <div class="teacher-header">
-                    <img src="images/teacher2/photo.jpg" alt="李晓芳教授" class="teacher-photo">
-                    <div class="teacher-info">
-                        <h3>李晓芳 硕士生导师</h3>
+                    <!-- 左侧：照片 + 个人信息 -->
+                    <div class="teacher-left-col">
+                        <img src="images/teacher2/photo.jpg" alt="李晓芳教授" class="teacher-photo">
                         <div class="info-grid">
                             <div class="info-item">
                                 <span class="info-label">性别</span>
@@ -810,31 +878,31 @@
                                 <span class="info-label">所在单位</span>
                                 <span class="info-value">智能车辆工程系</span>
                             </div>
-                            <div class="info-item" style="grid-column: 1 / -1;">
+                            <div class="info-item">
                                 <span class="info-label">电子邮箱</span>
                                 <span class="info-value"><a href="mailto:lixiaofang@university.edu.cn">lixiaofang@university.edu.cn</a></span>
                             </div>
-                            <div class="info-item" style="grid-column: 1 / -1;">
+                            <div class="info-item">
                                 <span class="info-label">研究场所</span>
                                 <span class="info-value">计算机学院大楼 A 座 502 室</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 右侧：姓名 + 个人简介 -->
+                    <div class="teacher-right-col">
+                        <h3 class="teacher-name">李晓芳 硕士生导师</h3>
+                        <div class="header-bio">
+                            <h4>👤 个人简介</h4>
+                            <div class="bio-text">
+                                <p>李晓芳，硕士生导师，毕业于中国科学技术大学，获博士学位。现任智能车辆工程系教师，主要研究方向为车辆工程与时空智能交叉领域。在智能交通系统、车辆轨迹分析及驾驶行为识别等方面具有深厚的研究积累。</p>
+                                <p>主持多项省部级科研项目及企业合作项目，发表高水平学术论文 30 余篇。致力于将人工智能技术应用于智能网联汽车领域，推动车辆工程学科的智能化转型，培养了一批优秀的硕士研究生。</p>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <div class="teacher-body">
-                    <!-- 个人简介 -->
-                    <div class="bio-section">
-                        <div class="section-header">
-                            <span class="section-icon">👤</span>
-                            <h4>个人简介</h4>
-                        </div>
-                        <div class="bio-text">
-                            <p>李晓芳，硕士生导师，毕业于中国科学技术大学，获博士学位。现任智能车辆工程系教师，主要研究方向为车辆工程与时空智能交叉领域。在智能交通系统、车辆轨迹分析及驾驶行为识别等方面具有深厚的研究积累。</p>
-                            <p>主持多项省部级科研项目及企业合作项目，发表高水平学术论文 30 余篇。致力于将人工智能技术应用于智能网联汽车领域，推动车辆工程学科的智能化转型，培养了一批优秀的硕士研究生。</p>
-                        </div>
-                    </div>
-
                     <!-- 研究方向 -->
                     <div class="research-section">
                         <div class="section-header">
@@ -948,9 +1016,9 @@
             <!-- ============ 老师 3 ============ -->
             <div class="teacher-card">
                 <div class="teacher-header">
-                    <img src="images/teacher3/photo.jpg" alt="王伟副教授" class="teacher-photo">
-                    <div class="teacher-info">
-                        <h3>王伟 硕士生导师</h3>
+                    <!-- 左侧：照片 + 个人信息 -->
+                    <div class="teacher-left-col">
+                        <img src="images/teacher3/photo.jpg" alt="王伟副教授" class="teacher-photo">
                         <div class="info-grid">
                             <div class="info-item">
                                 <span class="info-label">性别</span>
@@ -976,31 +1044,31 @@
                                 <span class="info-label">办公地点</span>
                                 <span class="info-value">翡翠湖校区科教楼 B 座 604</span>
                             </div>
-                            <div class="info-item" style="grid-column: 1 / -1;">
+                            <div class="info-item">
                                 <span class="info-label">电子邮箱</span>
                                 <span class="info-value"><a href="mailto:weiyy@hfut.edu.cn">weiyy@hfut.edu.cn</a></span>
                             </div>
-                            <div class="info-item" style="grid-column: 1 / -1;">
+                            <div class="info-item">
                                 <span class="info-label">手机</span>
                                 <span class="info-value">15212790264</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 右侧：姓名 + 个人简介 -->
+                    <div class="teacher-right-col">
+                        <h3 class="teacher-name">王伟 硕士生导师</h3>
+                        <div class="header-bio">
+                            <h4>👤 个人简介</h4>
+                            <div class="bio-text">
+                                <p>王伟，硕士生导师，研究生（博士）毕业，获博士学位。现任智能科学与技术系教师，办公地点位于翡翠湖校区科教楼 B 座 604。主要研究兴趣集中在位置服务、时空数据隐私保护及联邦学习等领域。</p>
+                                <p>近年来在隐私计算与分布式机器学习方面取得了显著进展，发表多篇高水平学术论文。主持多项国家级及省部级科研项目，与多家知名企业建立了良好的合作关系，致力于解决实际应用中的数据隐私与安全挑战。</p>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <div class="teacher-body">
-                    <!-- 个人简介 -->
-                    <div class="bio-section">
-                        <div class="section-header">
-                            <span class="section-icon">👤</span>
-                            <h4>个人简介</h4>
-                        </div>
-                        <div class="bio-text">
-                            <p>王伟，硕士生导师，研究生（博士）毕业，获博士学位。现任智能科学与技术系教师，办公地点位于翡翠湖校区科教楼 B 座 604。主要研究兴趣集中在位置服务、时空数据隐私保护及联邦学习等领域。</p>
-                            <p>近年来在隐私计算与分布式机器学习方面取得了显著进展，发表多篇高水平学术论文。主持多项国家级及省部级科研项目，与多家知名企业建立了良好的合作关系，致力于解决实际应用中的数据隐私与安全挑战。</p>
-                        </div>
-                    </div>
-
                     <!-- 研究方向 -->
                     <div class="research-section">
                         <div class="section-header">
@@ -1114,9 +1182,9 @@
             <!-- ============ 老师 4 ============ -->
             <div class="teacher-card">
                 <div class="teacher-header">
-                    <img src="images/teacher4/photo.jpg" alt="王丽讲师" class="teacher-photo">
-                    <div class="teacher-info">
-                        <h3>王丽 讲师</h3>
+                    <!-- 左侧：照片 + 个人信息 -->
+                    <div class="teacher-left-col">
+                        <img src="images/teacher4/photo.jpg" alt="王丽讲师" class="teacher-photo">
                         <div class="info-grid">
                             <div class="info-item">
                                 <span class="info-label">性别</span>
@@ -1142,35 +1210,35 @@
                                 <span class="info-label">所在单位</span>
                                 <span class="info-value">汽车与交通工程学院</span>
                             </div>
-                            <div class="info-item" style="grid-column: 1 / -1;">
+                            <div class="info-item">
                                 <span class="info-label">电子邮箱</span>
                                 <span class="info-value"><a href="mailto:wangli@hfut.edu.cn">wangli@hfut.edu.cn</a></span>
                             </div>
-                            <div class="info-item" style="grid-column: 1 / -1;">
+                            <div class="info-item">
                                 <span class="info-label">联系方式</span>
                                 <span class="info-value">17318530885</span>
                             </div>
-                            <div class="info-item" style="grid-column: 1 / -1;">
+                            <div class="info-item">
                                 <span class="info-label">办公地点</span>
                                 <span class="info-value">能动楼 212 东</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 右侧：姓名 + 个人简介 -->
+                    <div class="teacher-right-col">
+                        <h3 class="teacher-name">王丽 讲师</h3>
+                        <div class="header-bio">
+                            <h4>👤 个人简介</h4>
+                            <div class="bio-text">
+                                <p>王丽，讲师，博士研究生毕业，获博士学位，毕业于中国科学技术大学。现任汽车与交通工程学院教师，办公地点位于能动楼 212 东。主要研究方向为时空知识图谱、因果推理及可解释人工智能。</p>
+                                <p>在知识图谱构建与推理、因果发现等领域具有扎实的理论基础和丰富的实践经验。发表多篇高水平学术论文，参与多项国家级科研项目。致力于将可解释 AI 技术应用于交通领域，提升智能系统的可信度与透明度。</p>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <div class="teacher-body">
-                    <!-- 个人简介 -->
-                    <div class="bio-section">
-                        <div class="section-header">
-                            <span class="section-icon">👤</span>
-                            <h4>个人简介</h4>
-                        </div>
-                        <div class="bio-text">
-                            <p>王丽，讲师，博士研究生毕业，获博士学位，毕业于中国科学技术大学。现任汽车与交通工程学院教师，办公地点位于能动楼 212 东。主要研究方向为时空知识图谱、因果推理及可解释人工智能。</p>
-                            <p>在知识图谱构建与推理、因果发现等领域具有扎实的理论基础和丰富的实践经验。发表多篇高水平学术论文，参与多项国家级科研项目。致力于将可解释 AI 技术应用于交通领域，提升智能系统的可信度与透明度。</p>
-                        </div>
-                    </div>
-
                     <!-- 研究方向 -->
                     <div class="research-section">
                         <div class="section-header">
