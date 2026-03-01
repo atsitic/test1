@@ -102,9 +102,11 @@
             color: var(--white);
             font-weight: 600;
         }
+        /* 修改：确保表格内的链接样式明显 */
         .info-value a {
             color: var(--accent-color);
             text-decoration: underline;
+            word-break: break-all; /* 防止长链接溢出 */
         }
         .info-value a:hover { color: var(--white); }
 
@@ -162,9 +164,17 @@
         .paper-item:hover { background: #f8fafc; transform: translateX(5px); }
         .paper-icon { font-size: 1.3rem; flex-shrink: 0; }
         .paper-content { flex: 1; }
-        .paper-title { color: var(--text-dark); font-size: 1rem; font-weight: 500; margin-bottom: 8px; line-height: 1.5; }
-        .paper-title a { color: var(--primary-color); }
-        .paper-title a:hover { text-decoration: underline; }
+        
+        /* 修改：论文标题现在是纯文本，移除链接颜色 */
+        .paper-title { 
+            color: var(--text-dark); 
+            font-size: 1rem; 
+            font-weight: 500; 
+            margin-bottom: 8px; 
+            line-height: 1.5; 
+        }
+        /* 移除之前的 .paper-title a 样式，因为不再需要 */
+        
         .paper-meta { font-size: 0.85rem; color: var(--text-light); }
         .paper-year { background: var(--primary-color); color: var(--white); padding: 3px 10px; border-radius: 4px; font-size: 0.75rem; margin-left: 10px; font-weight: 600; }
 
@@ -313,11 +323,14 @@
                             </tr>
                             <tr>
                                 <td class="info-label">研究方向</td>
-                                <td class="info-value" colspan="3">多模态时序预测，联邦大模型， 计算机视觉</td>
+                                <td class="info-value" colspan="3">多模态时序预测，联邦大模型，计算机视觉</td>
                             </tr>
                             <tr>
                                 <td class="info-label">主页链接</td>
-                                <td class="info-value" colspan="3"><a href="#">http://faculty.hfut.edu.cn/liubo123/zh_CN/more/526701/jsjjgd/index.htm</a></td>
+                                <!-- 修改：将真实链接放入 href，并添加 target="_blank" -->
+                                <td class="info-value" colspan="3">
+                                    <a href="http://faculty.hfut.edu.cn/liubo123/zh_CN/more/526701/jsjjgd/index.htm" target="_blank">http://faculty.hfut.edu.cn/liubo123/...</a>
+                                </td>
                             </tr>
                         </table>
 
@@ -359,67 +372,68 @@
                         <li class="paper-item">
                             <span class="paper-icon">📄</span>
                             <div class="paper-content">
-                                <p class="paper-title"><a href="#">Communication-Efficient and Personalized Federated Foundation Model Fine-Tuning via Tri-Matrix Adaptation</a> <span class="paper-year">2025</span></p>
+                                <!-- 修改：去掉了 <a> 标签，变为纯文本 -->
+                                <p class="paper-title">Communication-Efficient and Personalized Federated Foundation Model Fine-Tuning via Tri-Matrix Adaptation <span class="paper-year">2025</span></p>
                             </div>
                         </li>
                         <li class="paper-item">
                             <span class="paper-icon">📄</span>
                             <div class="paper-content">
-                                <p class="paper-title"><a href="#">Federated learning-based prediction of depression among adolescents across multiple districts in China</a> <span class="paper-year">2025</span></p>
+                                <p class="paper-title">Federated learning-based prediction of depression among adolescents across multiple districts in China <span class="paper-year">2025</span></p>
                             </div>
                         </li>
                         <li class="paper-item">
                             <span class="paper-icon">📄</span>
                             <div class="paper-content">
-                                <p class="paper-title"><a href="#">Rate-My-LoRA: Efficient and Adaptive Federated Model Tuning for Cardiac MRI Segmentation</a> <span class="paper-year">2025</span></p>
+                                <p class="paper-title">Rate-My-LoRA: Efficient and Adaptive Federated Model Tuning for Cardiac MRI Segmentation <span class="paper-year">2025</span></p>
                             </div>
                         </li>
                         <li class="paper-item">
                             <span class="paper-icon">📄</span>
                             <div class="paper-content">
-                                <p class="paper-title"><a href="#">Text kernel expansion for real-time scene text detection</a> <span class="paper-year">2025</span></p>
+                                <p class="paper-title">Text kernel expansion for real-time scene text detection <span class="paper-year">2025</span></p>
                             </div>
                         </li>
                         <li class="paper-item">
                             <span class="paper-icon">📄</span>
                             <div class="paper-content">
-                                <p class="paper-title"><a href="#">Category-Prompt Refined Feature Learning for Long-Tailed Multi-Label Image Classification</a> <span class="paper-year">2024</span></p>
+                                <p class="paper-title">Category-Prompt Refined Feature Learning for Long-Tailed Multi-Label Image Classification <span class="paper-year">2024</span></p>
                             </div>
                         </li>
                         <li class="paper-item">
                             <span class="paper-icon">📄</span>
                             <div class="paper-content">
-                                <p class="paper-title"><a href="#">SAM-MIL: A Spatial Contextual Aware Multiple Instance Learning Approach for Whole Slide Image Classification</a> <span class="paper-year">2024</span></p>
+                                <p class="paper-title">SAM-MIL: A Spatial Contextual Aware Multiple Instance Learning Approach for Whole Slide Image Classification <span class="paper-year">2024</span></p>
                             </div>
                         </li>
                         <li class="paper-item">
                             <span class="paper-icon">📄</span>
                             <div class="paper-content">
-                                <p class="paper-title"><a href="#">DICE: Discrete Inversion Enabling Controllable Editing for Multinomial Diffusion and Masked Generative Models</a> <span class="paper-year">2024</span></p>
+                                <p class="paper-title">DICE: Discrete Inversion Enabling Controllable Editing for Multinomial Diffusion and Masked Generative Models <span class="paper-year">2024</span></p>
                             </div>
                         </li>
                         <li class="paper-item">
                             <span class="paper-icon">📄</span>
                             <div class="paper-content">
-                                <p class="paper-title"><a href="#">Gloss Prior Guided Visual Feature Learning for Continuous Sign Language Recognition</a> <span class="paper-year">2024</span></p>
+                                <p class="paper-title">Gloss Prior Guided Visual Feature Learning for Continuous Sign Language Recognition <span class="paper-year">2024</span></p>
                             </div>
                         </li>
                         <li class="paper-item">
                             <span class="paper-icon">📄</span>
                             <div class="paper-content">
-                                <p class="paper-title"><a href="#">Mssd: multi-scale self-distillation for object detection</a> <span class="paper-year">2024</span></p>
+                                <p class="paper-title">Mssd: multi-scale self-distillation for object detection <span class="paper-year">2024</span></p>
                             </div>
                         </li>
                         <li class="paper-item">
                             <span class="paper-icon">📄</span>
                             <div class="paper-content">
-                                <p class="paper-title"><a href="#">Feature Re-Embedding: Towards Foundation Model-Level Performance in Computational Pathology</a> <span class="paper-year">2024</span></p>
+                                <p class="paper-title">Feature Re-Embedding: Towards Foundation Model-Level Performance in Computational Pathology <span class="paper-year">2024</span></p>
                             </div>
                         </li>
                         <li class="paper-item">
                             <span class="paper-icon">📄</span>
                             <div class="paper-content">
-                                <p class="paper-title"><a href="#">Generalizable Fourier Augmentation for Unsupervised Video Object Segmentation</a> <span class="paper-year">2024</span></p>
+                                <p class="paper-title">Generalizable Fourier Augmentation for Unsupervised Video Object Segmentation <span class="paper-year">2024</span></p>
                             </div>
                         </li>
                     </ul>
@@ -444,7 +458,10 @@
                             </tr>
                             <tr>
                                 <td class="info-label">主页链接</td>
-                                <td class="info-value" colspan="3"><a href="#">https://faculty.hfut.edu.cn/wuji/zh_CN/index.htm</a></td>
+                                <!-- 修改：将真实链接放入 href -->
+                                <td class="info-value" colspan="3">
+                                    <a href="https://faculty.hfut.edu.cn/wuji/zh_CN/index.htm" target="_blank">https://faculty.hfut.edu.cn/wuji/...</a>
+                                </td>
                             </tr>
                         </table>
 
@@ -481,67 +498,68 @@
                         <li class="paper-item">
                             <span class="paper-icon">📄</span>
                             <div class="paper-content">
-                                <p class="paper-title"><a href="#">Profit-aware battery swapping station energy scheduling via hybrid hierarchical deep reinforcement learning</a> <span class="paper-year">2026</span></p>
+                                <!-- 修改：去掉了 <a> 标签 -->
+                                <p class="paper-title">Profit-aware battery swapping station energy scheduling via hybrid hierarchical deep reinforcement learning <span class="paper-year">2026</span></p>
                             </div>
                         </li>
                         <li class="paper-item">
                             <span class="paper-icon">📄</span>
                             <div class="paper-content">
-                                <p class="paper-title"><a href="#">Residual Value Evaluation for Power Battery Packs Based on Multilevel Feature Fusion</a> <span class="paper-year">2025</span></p>
+                                <p class="paper-title">Residual Value Evaluation for Power Battery Packs Based on Multilevel Feature Fusion <span class="paper-year">2025</span></p>
                             </div>
                         </li>
                         <li class="paper-item">
                             <span class="paper-icon">📄</span>
                             <div class="paper-content">
-                                <p class="paper-title"><a href="#">融合聚类与分类的退役锂离子电池快速分选</a> <span class="paper-year">2025</span></p>
+                                <p class="paper-title">融合聚类与分类的退役锂离子电池快速分选 <span class="paper-year">2025</span></p>
                             </div>
                         </li>
                         <li class="paper-item">
                             <span class="paper-icon">📄</span>
                             <div class="paper-content">
-                                <p class="paper-title"><a href="#">EV charging scheduling under limited charging constraints by an improve proximal policy optimization algorithm</a> <span class="paper-year">2025</span></p>
+                                <p class="paper-title">EV charging scheduling under limited charging constraints by an improve proximal policy optimization algorithm <span class="paper-year">2025</span></p>
                             </div>
                         </li>
                         <li class="paper-item">
                             <span class="paper-icon">📄</span>
                             <div class="paper-content">
-                                <p class="paper-title"><a href="#">Retired Lithium-Ion Batteries Screening via Feature Tokeniser-Transformer Considering Data Imbalance</a> <span class="paper-year">2025</span></p>
+                                <p class="paper-title">Retired Lithium-Ion Batteries Screening via Feature Tokeniser-Transformer Considering Data Imbalance <span class="paper-year">2025</span></p>
                             </div>
                         </li>
                         <li class="paper-item">
                             <span class="paper-icon">📄</span>
                             <div class="paper-content">
-                                <p class="paper-title"><a href="#">State of charge estimation with representative cells-based hybrid model for lithium-ion battery pack</a> <span class="paper-year">2025</span></p>
+                                <p class="paper-title">State of charge estimation with representative cells-based hybrid model for lithium-ion battery pack <span class="paper-year">2025</span></p>
                             </div>
                         </li>
                         <li class="paper-item">
                             <span class="paper-icon">📄</span>
                             <div class="paper-content">
-                                <p class="paper-title"><a href="#">Model-Free Quantitative Diagnosis of Internal Short Circuit for Sodium-Ion Batteries with Charging Capacity Difference Analysis</a> <span class="paper-year">2025</span></p>
+                                <p class="paper-title">Model-Free Quantitative Diagnosis of Internal Short Circuit for Sodium-Ion Batteries with Charging Capacity Difference Analysis <span class="paper-year">2025</span></p>
                             </div>
                         </li>
                         <li class="paper-item">
                             <span class="paper-icon">📄</span>
                             <div class="paper-content">
-                                <p class="paper-title"><a href="#">Retired Battery Screening Based on Rebooted Auxiliary Classifier Generative Adversarial Network and Improved Gramian Angular Field</a> <span class="paper-year">2025</span></p>
+                                <p class="paper-title">Retired Battery Screening Based on Rebooted Auxiliary Classifier Generative Adversarial Network and Improved Gramian Angular Field <span class="paper-year">2025</span></p>
                             </div>
                         </li>
                         <li class="paper-item">
                             <span class="paper-icon">📄</span>
                             <div class="paper-content">
-                                <p class="paper-title"><a href="#">Multi-feature weighted battery pack consistency evaluation based on massive real-world data</a> <span class="paper-year">2025</span></p>
+                                <p class="paper-title">Multi-feature weighted battery pack consistency evaluation based on massive real-world data <span class="paper-year">2025</span></p>
                             </div>
                         </li>
                         <li class="paper-item">
                             <span class="paper-icon">📄</span>
                             <div class="paper-content">
-                                <p class="paper-title"><a href="#">Capacity estimation of retired lithium-ion batteries using random charging segments from massive real-world data</a> <span class="paper-year">2025</span></p>
+                                <p class="paper-title">Capacity estimation of retired lithium-ion batteries using random charging segments from massive real-world data <span class="paper-year">2025</span></p>
                             </div>
                         </li>
                         <li class="paper-item">
                             <span class="paper-icon">📄</span>
                             <div class="paper-content">
-                                <p class="paper-title"><a href="#">Retired battery capacity screening based on deep learning with embedded feature smoothing under massive imbalanced data</a> <span class="paper-year">2025</span></p>
+                                <p class="paper-title">Retired battery capacity screening based on deep learning with embedded feature smoothing under massive imbalanced data <span class="paper-year">2025</span></p>
                             </div>
                         </li>
                     </ul>
@@ -566,7 +584,10 @@
                             </tr>
                             <tr>
                                 <td class="info-label">主页链接</td>
-                                <td class="info-value" colspan="3"><a href="mailto:https://faculty.hfut.edu.cn/weiyanyan/zh_CN/index.htm">https://faculty.hfut.edu.cn/weiyanyan/zh_CN/index.htm</a></td>
+                                <!-- 修改：去掉了错误的 mailto:，放入正确链接 -->
+                                <td class="info-value" colspan="3">
+                                    <a href="https://faculty.hfut.edu.cn/weiyanyan/zh_CN/index.htm" target="_blank">https://faculty.hfut.edu.cn/weiyanyan/...</a>
+                                </td>
                             </tr>
                         </table>
 
@@ -599,61 +620,62 @@
                         <li class="paper-item">
                             <span class="paper-icon">📄</span>
                             <div class="paper-content">
-                                <p class="paper-title"><a href="#">Yanyan Wei, Zhao Zhang*, Yang Wang*, Mingliang Xu, Yi Yang, Shuicheng Yan and Meng Wang, "DerainCycleGAN: Rain Attentive CycleGAN for Single Image Deraining and Rainmaking", IEEE Transactions on Image Processing (IEEE TIP), 30:4788–4801, 2021.（谷歌学术引用：266）</a></p>
+                                <!-- 修改：去掉了 <a> 标签 -->
+                                <p class="paper-title">Yanyan Wei, Zhao Zhang*, Yang Wang*, Mingliang Xu, Yi Yang, Shuicheng Yan and Meng Wang, "DerainCycleGAN: Rain Attentive CycleGAN for Single Image Deraining and Rainmaking", IEEE Transactions on Image Processing (IEEE TIP), 30:4788–4801, 2021.（谷歌学术引用：266）</p>
                             </div>
                         </li>
                         <li class="paper-item">
                             <span class="paper-icon">📄</span>
                             <div class="paper-content">
-                                <p class="paper-title"><a href="#">Yanyan Wei, Zhao Zhang*, Huan Zheng, Richang Hong, Yi Yang and Meng Wang, "SGINet: Toward Sufficient Interaction Between Single Image Deraining and Semantic Segmentation", in Proceedings of the 30th ACM International Conference on Multimedia (ACM MM), pages 6202–6210, 2022.（谷歌学术引用：38）</a></p>
+                                <p class="paper-title">Yanyan Wei, Zhao Zhang*, Huan Zheng, Richang Hong, Yi Yang and Meng Wang, "SGINet: Toward Sufficient Interaction Between Single Image Deraining and Semantic Segmentation", in Proceedings of the 30th ACM International Conference on Multimedia (ACM MM), pages 6202–6210, 2022.（谷歌学术引用：38）</p>
                             </div>
                         </li>
                         <li class="paper-item">
                             <span class="paper-icon">📄</span>
                             <div class="paper-content">
-                                <p class="paper-title"><a href="#">Yanyan Wei, Zhao Zhang*, Mingliang Xu, Richang Hong, Jicong Fan and Shuicheng Yan, "Robust Attention Deraining Network for Synchronous Rain Streaks and Raindrops Removal", in Proceedings of the 30th ACM International Conference on Multimedia (ACM MM), pages 6464–6472, 2022.（谷歌学术引用：22）</a></p>
+                                <p class="paper-title">Yanyan Wei, Zhao Zhang*, Mingliang Xu, Richang Hong, Jicong Fan and Shuicheng Yan, "Robust Attention Deraining Network for Synchronous Rain Streaks and Raindrops Removal", in Proceedings of the 30th ACM International Conference on Multimedia (ACM MM), pages 6464–6472, 2022.（谷歌学术引用：22）</p>
                             </div>
                         </li>
                         <li class="paper-item">
                             <span class="paper-icon">📄</span>
                             <div class="paper-content">
-                                <p class="paper-title"><a href="#">Zhao Zhang*, Yanyan Wei, Haijun Zhang, Yi Yang, Shuicheng Yan and Meng Wang, "Data-Driven Single Image Deraining: A Comprehensive Review and New Perspectives", Pattern Recognition (Pattern Recognition), vol.143, no.6, pp.1-23, June 2023.（谷歌学术引用：81）</a></p>
+                                <p class="paper-title">Zhao Zhang*, Yanyan Wei, Haijun Zhang, Yi Yang, Shuicheng Yan and Meng Wang, "Data-Driven Single Image Deraining: A Comprehensive Review and New Perspectives", Pattern Recognition (Pattern Recognition), vol.143, no.6, pp.1-23, June 2023.（谷歌学术引用：81）</p>
                             </div>
                         </li>
                         <li class="paper-item">
                             <span class="paper-icon">📄</span>
                             <div class="paper-content">
-                                <p class="paper-title"><a href="#">Yanyan Wei, Tianyi Mao, Baiang Li, Fei Wang, Feng Li, Zhao Zhang and Yang Zhao*, "Visual Models and Large Multimodal Models Promote Image Restoration and Enhancement: Research Progress", Journal of Image and Graphics, 2025: 1-23.</a></p>
+                                <p class="paper-title">Yanyan Wei, Tianyi Mao, Baiang Li, Fei Wang, Feng Li, Zhao Zhang and Yang Zhao*, "Visual Models and Large Multimodal Models Promote Image Restoration and Enhancement: Research Progress", Journal of Image and Graphics, 2025: 1-23.</p>
                             </div>
                         </li>
                         <li class="paper-item">
                             <span class="paper-icon">📄</span>
                             <div class="paper-content">
-                                <p class="paper-title"><a href="#">Yanyan Wei, Zhao Zhang*, Zhongqiu Zhao, Yang Zhao, Richang Hong, Yi Yang and Meng Wang, "High-Fidelity Stereoscopic Image Rain Removal with Texture Integrity and Disparity Consistency", in Proceedings of the 2025 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP), 2025: 1-5.</a></p>
+                                <p class="paper-title">Yanyan Wei, Zhao Zhang*, Zhongqiu Zhao, Yang Zhao, Richang Hong, Yi Yang and Meng Wang, "High-Fidelity Stereoscopic Image Rain Removal with Texture Integrity and Disparity Consistency", in Proceedings of the 2025 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP), 2025: 1-5.</p>
                             </div>
                         </li>
                         <li class="paper-item">
                             <span class="paper-icon">📄</span>
                             <div class="paper-content">
-                                <p class="paper-title"><a href="#">Yanyan Wei, Yilin Zhang, Zhao Zhang*, Kun Li, Fei Wang, Shengeng Tang, "Leveraging Vision-language Prompts for Real-world Image Restoration and Enhancement", Computer Vision and Image Understanding (CVIU), 250: 104222, Oct 2024.</a></p>
+                                <p class="paper-title">Yanyan Wei, Yilin Zhang, Zhao Zhang*, Kun Li, Fei Wang, Shengeng Tang, "Leveraging Vision-language Prompts for Real-world Image Restoration and Enhancement", Computer Vision and Image Understanding (CVIU), 250: 104222, Oct 2024.</p>
                             </div>
                         </li>
                         <li class="paper-item">
                             <span class="paper-icon">📄</span>
                             <div class="paper-content">
-                                <p class="paper-title"><a href="#">Junhu Wang#, Yanyan Wei#, Zhao Zhang*, Jicong Fan, Yang Zhao*, Yi Yang and Meng Wang, "Progressive Stereo Image Dehazing Network via Cross-view Region Interaction", IEEE Transactions on Multimedia (IEEE TMM), Feb 2024.</a></p>
+                                <p class="paper-title">Junhu Wang#, Yanyan Wei#, Zhao Zhang*, Jicong Fan, Yang Zhao*, Yi Yang and Meng Wang, "Progressive Stereo Image Dehazing Network via Cross-view Region Interaction", IEEE Transactions on Multimedia (IEEE TMM), Feb 2024.</p>
                             </div>
                         </li>
                         <li class="paper-item">
                             <span class="paper-icon">📄</span>
                             <div class="paper-content">
-                                <p class="paper-title"><a href="#">Yanyan Wei, Zhao Zhang*, Yang Wang, Haijun Zhang, Mingbo Zhao, Mingliang Xu* and Meng Wang, "Semi-DerainGAN: A New Semi-supervised Single Image Deraining Network", in Proceedings of the 2021 IEEE International Conference on Multimedia and Expo (IEEE ICME), pages 1–6, 2021.（谷歌学术引用：57）</a></p>
+                                <p class="paper-title">Yanyan Wei, Zhao Zhang*, Yang Wang, Haijun Zhang, Mingbo Zhao, Mingliang Xu* and Meng Wang, "Semi-DerainGAN: A New Semi-supervised Single Image Deraining Network", in Proceedings of the 2021 IEEE International Conference on Multimedia and Expo (IEEE ICME), pages 1–6, 2021.（谷歌学术引用：57）</p>
                             </div>
                         </li>
                         <li class="paper-item">
                             <span class="paper-icon">📄</span>
                             <div class="paper-content">
-                                <p class="paper-title"><a href="#">Yanyan Wei, Zhao Zhang*, Haijun Zhang, Richang Hong and Meng Wang, "A Coarse-to-Fine Multi-stream Hybrid Deraining Network for Single Image Deraining", in Proceedings of the 2019 IEEE International Conference on Data Mining (IEEE ICDM), pages 628–637, 2019.（谷歌学术引用：46）</a></p>
+                                <p class="paper-title">Yanyan Wei, Zhao Zhang*, Haijun Zhang, Richang Hong and Meng Wang, "A Coarse-to-Fine Multi-stream Hybrid Deraining Network for Single Image Deraining", in Proceedings of the 2019 IEEE International Conference on Data Mining (IEEE ICDM), pages 628–637, 2019.（谷歌学术引用：46）</p>
                             </div>
                         </li>
                     </ul>
@@ -674,16 +696,19 @@
                             </tr>
                             <tr>
                                 <td class="info-label">研究方向</td>
-                                <td class="info-value" colspan="3">多源储能的能量管理与智能控制，电池荷电状态（SOC）估计与健康状态（SOH）预测，储能系统电-热耦合建模与热-功率协同管理</td>
+                                <td class="info-value" colspan="3">多源储能的能量管理与智能控制，电池荷电状态（SOC）估计与健康状态（SOH）预测，储能系统电 - 热耦合建模与热 - 功率协同管理</td>
                             </tr>
                             <tr>
                                 <td class="info-label">主页链接</td>
-                                <td class="info-value" colspan="3"><a href="https://faculty.hfut.edu.cn/Wangli/zh_CN/index.htm">https://faculty.hfut.edu.cn/Wangli/zh_CN/index.htm</a></td>
+                                <!-- 修改：添加 target="_blank" -->
+                                <td class="info-value" colspan="3">
+                                    <a href="https://faculty.hfut.edu.cn/Wangli/zh_CN/index.htm" target="_blank">https://faculty.hfut.edu.cn/Wangli/...</a>
+                                </td>
                             </tr>
                         </table>
 
                         <div class="teacher-bio">
-                            <p>硕士生导师，讲师。中国自动化学会系统仿真专业委员会委员，中国仿真学会仿真技术应用专业委员会委员，电气与电子工程师协会会员（IEEE member）。主持国家自然科学青年基金项目、中央高校基础科研校立项目等纵向课题。参与国家重点研发计划课题、安徽省高校协同创新项目等项目。申请、受理专利15+项。发表高水平论文19篇（其中SCI论文16篇，ESI高被引论文2篇）。</p>
+                            <p>硕士生导师，讲师。中国自动化学会系统仿真专业委员会委员，中国仿真学会仿真技术应用专业委员会委员，电气与电子工程师协会会员（IEEE member）。主持国家自然科学青年基金项目、中央高校基础科研校立项目等纵向课题。参与国家重点研发计划课题、安徽省高校协同创新项目等项目。申请、受理专利 15+ 项。发表高水平论文 19 篇（其中 SCI 论文 16 篇，ESI 高被引论文 2 篇）。</p>
                         </div>
 
                         <div class="students-section">
@@ -711,31 +736,32 @@
                         <li class="paper-item">
                             <span class="paper-icon">📄</span>
                             <div class="paper-content">
-                                <p class="paper-title"><a href="#"> A Comprehensive Review of Battery Modeling and State Estimation Approaches for Advanced BMS</a></p>
+                                <!-- 修改：去掉了 <a> 标签 -->
+                                <p class="paper-title">A Comprehensive Review of Battery Modeling and State Estimation Approaches for Advanced BMS</p>
                             </div>
                         </li>
                         <li class="paper-item">
                             <span class="paper-icon">📄</span>
                             <div class="paper-content">
-                                <p class="paper-title"><a href="#"> Load-adaptive Real-time EMS for Battery/Ultracapacitor HESS using Dynamic Programming</a></p>
+                                <p class="paper-title">Load-adaptive Real-time EMS for Battery/Ultracapacitor HESS using Dynamic Programming</p>
                             </div>
                         </li>
                         <li class="paper-item">
                             <span class="paper-icon">📄</span>
                             <div class="paper-content">
-                                <p class="paper-title"><a href="#"> Sizing Optimization & EMS for HESS using Multi-objective Optimization and Random Forests</a></p>
+                                <p class="paper-title">Sizing Optimization & EMS for HESS using Multi-objective Optimization and Random Forests</p>
                             </div>
                         </li>
                         <li class="paper-item">
                             <span class="paper-icon">📄</span>
                             <div class="paper-content">
-                                <p class="paper-title"><a href="#"> Adaptive MPC-based Power Distribution Strategy for HESS</a></p>
+                                <p class="paper-title">Adaptive MPC-based Power Distribution Strategy for HESS</p>
                             </div>
                         </li>
                         <li class="paper-item">
                             <span class="paper-icon">📄</span>
                             <div class="paper-content">
-                                <p class="paper-title"><a href="#"> Energy Management Strategy and Optimal Sizing for HESS using an Evolutionary Algorithm</a></p>
+                                <p class="paper-title">Energy Management Strategy and Optimal Sizing for HESS using an Evolutionary Algorithm</p>
                             </div>
                         </li>
                     </ul>
@@ -772,7 +798,7 @@
                     <span class="research-number">2</span>
                     <h5 class="research-title">多模态时序预测</h5>
                     <p class="research-desc">
-                        针对在线、实时的电池监测与控制需求，设计、开发基于嵌入式平台的电池管理系统。依托云平台海量的运行数据，开展电池信息挖掘、退役动力电池分选和二次利用研究。“云-端”协同，实现新能源汽车动力系统状态监控、故障预警、风险评估和全生命周期管理。构建面向微电网系统能量管理、车辆充放电调度等场景的优化策略，实现能源高效利用。
+                        针对在线、实时的电池监测与控制需求，设计、开发基于嵌入式平台的电池管理系统。依托云平台海量的运行数据，开展电池信息挖掘、退役动力电池分选和二次利用研究。“云 - 端”协同，实现新能源汽车动力系统状态监控、故障预警、风险评估和全生命周期管理。构建面向微电网系统能量管理、车辆充放电调度等场景的优化策略，实现能源高效利用。
                     </p>
                 </div>
             </div>
@@ -808,7 +834,7 @@
                     <span class="research-number">5</span>
                     <h5 class="research-title">混合动力系统建模、状态估计、能量管理与容量配置</h5>
                     <p class="research-desc">
-                        面向新能源车辆与混合储能系统（HESS），以“机理建模+数据驱动+智能优化控制”为主线：围绕电池/超级电容等多源储能的能量管理与智能控制，研究自适应MPC、动态规划与强化学习等在线功率分配与约束优化；结合特征工程与机器学习，面向大规模运行数据开展电池荷电状态（SOC）估计与健康状态（SOH）预测；同时从系统层面研究储能系统电-热耦合建模与热-功率协同管理，并利用多目标进化算法与机器学习（如随机森林、模式识别）实现容量配置与控制策略参数的协同优化，提升系统效率、寿命与安全性。
+                        面向新能源车辆与混合储能系统（HESS），以“机理建模 + 数据驱动 + 智能优化控制”为主线：围绕电池/超级电容等多源储能的能量管理与智能控制，研究自适应 MPC、动态规划与强化学习等在线功率分配与约束优化；结合特征工程与机器学习，面向大规模运行数据开展电池荷电状态（SOC）估计与健康状态（SOH）预测；同时从系统层面研究储能系统电 - 热耦合建模与热 - 功率协同管理，并利用多目标进化算法与机器学习（如随机森林、模式识别）实现容量配置与控制策略参数的协同优化，提升系统效率、寿命与安全性。
                     </p>
                 </div>
             </div>
@@ -893,7 +919,7 @@
             <div class="contact-item">
                 <div class="contact-icon">🌐</div>
                 <h4>网站</h4>
-                <p><a href="https://github.com/你的用户名">GitHub 主页</a></p>
+                <p><a href="https://github.com/你的用户名" target="_blank">GitHub 主页</a></p>
             </div>
         </div>
     </div>
@@ -910,9 +936,3 @@
 
 </body>
 </html>
-
-
-
-
-
-
