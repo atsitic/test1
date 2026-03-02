@@ -321,10 +321,9 @@
             box-shadow: 0 15px 40px rgba(0,0,0,0.1); 
         }
         
-        /* 修改：使用 aspect-ratio 固定图片容器宽高比 */
+        /* 修改：固定宽度，高度自适应，保留原始比例 */
         .research-img-box {
             width: 100%;
-            aspect-ratio: 16 / 9;
             overflow: hidden;
             background: #f1f5f9;
             position: relative;
@@ -332,14 +331,13 @@
         
         .research-img { 
             width: 100%; 
-            height: 100%; 
-            object-fit: cover;
-            object-position: center;
+            height: auto; /* 高度自适应，保持原始比例 */
+            display: block;
             transition: 0.5s;
         }
         
         .research-card:hover .research-img { 
-            transform: scale(1.05); 
+            transform: scale(1.03); 
         }
 
         .research-content { 
@@ -1002,6 +1000,7 @@
                 </div>
                 <a href="#" target="_blank" class="partner-link">英特灵达</a>
             </div>
+
 
 
 
