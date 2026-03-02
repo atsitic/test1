@@ -301,7 +301,11 @@
 
         /* ==================== 研究方向模块 (图片优化) ==================== */
         .research-global { background: #f8fafc; }
-        .research-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; }
+        .research-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
+            gap: 30px; 
+        }
         
         .research-card { 
             background: var(--white); 
@@ -312,27 +316,67 @@
             display: flex;
             flex-direction: column;
         }
-        .research-card:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(0,0,0,0.1); }
+        .research-card:hover { 
+            transform: translateY(-5px); 
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1); 
+        }
         
-        /* 修改：图片容器保持固定宽高比，防止变形 */
+        /* 修改：使用 aspect-ratio 固定图片容器宽高比 */
         .research-img-box {
             width: 100%;
-            height: 220px; /* 固定高度 */
+            aspect-ratio: 16 / 9;
             overflow: hidden;
-            background: #eee;
+            background: #f1f5f9;
+            position: relative;
         }
+        
         .research-img { 
             width: 100%; 
             height: 100%; 
-            object-fit: cover; /* 关键：裁剪填充，保持比例 */
+            object-fit: cover;
+            object-position: center;
             transition: 0.5s;
         }
-        .research-card:hover .research-img { transform: scale(1.05); }
+        
+        .research-card:hover .research-img { 
+            transform: scale(1.05); 
+        }
 
-        .research-content { padding: 30px; flex: 1; display: flex; flex-direction: column; }
-        .research-number { display: inline-block; background: var(--gradient); color: var(--white); width: 35px; height: 35px; line-height: 35px; text-align: center; border-radius: 50%; font-size: 1rem; font-weight: bold; margin-bottom: 15px; }
-        .research-title { font-size: 1.3rem; color: var(--secondary-color); margin-bottom: 15px; font-weight: 600; }
-        .research-desc { color: var(--text-light); font-size: 0.95rem; line-height: 1.8; text-align: justify; flex: 1; }
+        .research-content { 
+            padding: 25px; 
+            flex: 1; 
+            display: flex; 
+            flex-direction: column; 
+        }
+        
+        .research-number { 
+            display: inline-block; 
+            background: var(--gradient); 
+            color: var(--white); 
+            width: 32px; 
+            height: 32px; 
+            line-height: 32px; 
+            text-align: center; 
+            border-radius: 50%; 
+            font-size: 0.9rem; 
+            font-weight: bold; 
+            margin-bottom: 12px; 
+        }
+        
+        .research-title { 
+            font-size: 1.2rem; 
+            color: var(--secondary-color); 
+            margin-bottom: 12px; 
+            font-weight: 600; 
+        }
+        
+        .research-desc { 
+            color: var(--text-light); 
+            font-size: 0.9rem; 
+            line-height: 1.7; 
+            text-align: justify; 
+            flex: 1; 
+        }
 
         /* ==================== 合作企业模块 (图片优化) ==================== */
         .partners { background: var(--white); }
@@ -958,6 +1002,7 @@
                 </div>
                 <a href="#" target="_blank" class="partner-link">英特灵达</a>
             </div>
+
 
 
 
