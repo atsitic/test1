@@ -39,7 +39,6 @@
         /* ==================== Hero 区域 ==================== */
         .hero { 
             height: 80vh; 
-            /* 保留渐变底色 */
             background: var(--gradient); 
             display: flex; 
             align-items: center; 
@@ -48,16 +47,9 @@
             color: var(--white); 
             position: relative; 
             overflow: hidden; 
-            /* 新增：时空数据背景纹理 (网格 + 波形 + 节点) */
-            background-image: 
-                linear-gradient(rgba(15, 23, 42, 0.85), rgba(30, 64, 175, 0.9)), /* 遮罩层，保证文字清晰 */
-                url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%233b82f6' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E"),
-                /* 模拟波形/时间轴 */
-                linear-gradient(135deg, rgba(59, 130, 246, 0.1) 25%, transparent 25%, transparent 50%, rgba(59, 130, 246, 0.1) 50%, rgba(59, 130, 246, 0.1) 75%, transparent 75%, transparent);
-            background-size: cover, 100px 100px, 40px 40px;
         }
         
-        /* 新增：背景装饰元素容器 */
+        /* 炫酷背景容器 */
         .hero-bg-decoration {
             position: absolute;
             top: 0;
@@ -69,50 +61,194 @@
             overflow: hidden;
         }
 
-        /* 新增：浮动的数据点 (模拟时空节点) */
+        /* 动态网格背景（时空坐标系） */
+        .grid-bg {
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            top: -50%;
+            left: -50%;
+            background-image: 
+                linear-gradient(rgba(59, 130, 246, 0.15) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(59, 130, 246, 0.15) 1px, transparent 1px);
+            background-size: 60px 60px;
+            transform: perspective(500px) rotateX(60deg);
+            animation: gridMove 20s linear infinite;
+            opacity: 0.4;
+        }
+
+        /* 第二层网格（更密集） */
+        .grid-bg-2 {
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            top: -50%;
+            left: -50%;
+            background-image: 
+                linear-gradient(rgba(147, 197, 253, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(147, 197, 253, 0.1) 1px, transparent 1px);
+            background-size: 30px 30px;
+            transform: perspective(500px) rotateX(60deg);
+            animation: gridMove 15s linear infinite reverse;
+            opacity: 0.3;
+        }
+
+        /* 时空数据流线条 */
+        .data-stream {
+            position: absolute;
+            width: 3px;
+            height: 100px;
+            background: linear-gradient(to bottom, transparent, #3b82f6, transparent);
+            border-radius: 2px;
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.8);
+            animation: streamFall 3s linear infinite;
+        }
+
+        .stream-1 { left: 10%; top: -100px; animation-duration: 4s; animation-delay: 0s; }
+        .stream-2 { left: 25%; top: -100px; animation-duration: 5s; animation-delay: 1s; }
+        .stream-3 { left: 40%; top: -100px; animation-duration: 3s; animation-delay: 2s; }
+        .stream-4 { left: 55%; top: -100px; animation-duration: 6s; animation-delay: 0.5s; }
+        .stream-5 { left: 70%; top: -100px; animation-duration: 4s; animation-delay: 1.5s; }
+        .stream-6 { left: 85%; top: -100px; animation-duration: 5s; animation-delay: 2.5s; }
+
+        /* 浮动数据节点（带光晕） */
         .data-node {
             position: absolute;
-            background: rgba(255, 255, 255, 0.15);
             border-radius: 50%;
-            box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
-            animation: floatNode 15s infinite linear;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.8) 0%, transparent 70%);
+            box-shadow: 0 0 30px rgba(59, 130, 246, 0.6);
+            animation: floatNode 8s ease-in-out infinite;
         }
 
-        .node-1 { width: 8px; height: 8px; top: 20%; left: 10%; animation-duration: 20s; }
-        .node-2 { width: 12px; height: 12px; top: 60%; left: 80%; animation-duration: 25s; animation-delay: -5s; }
-        .node-3 { width: 6px; height: 6px; top: 40%; left: 50%; animation-duration: 18s; animation-delay: -10s; }
-        .node-4 { width: 15px; height: 15px; top: 80%; left: 20%; animation-duration: 30s; animation-delay: -2s; }
-        
-        /* 新增：连接线 (模拟数据流) */
-        .data-line {
+        .node-1 { width: 15px; height: 15px; top: 20%; left: 15%; animation-delay: 0s; }
+        .node-2 { width: 20px; height: 20px; top: 60%; left: 75%; animation-delay: 2s; }
+        .node-3 { width: 12px; height: 12px; top: 40%; left: 50%; animation-delay: 4s; }
+        .node-4 { width: 25px; height: 25px; top: 75%; left: 25%; animation-delay: 1s; }
+        .node-5 { width: 18px; height: 18px; top: 30%; left: 85%; animation-delay: 3s; }
+        .node-6 { width: 10px; height: 10px; top: 50%; left: 10%; animation-delay: 5s; }
+
+        /* 节点连接线 */
+        .node-connection {
             position: absolute;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.4), transparent);
-            width: 200px;
-            animation: flowLine 8s infinite linear;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.5), transparent);
+            transform-origin: left center;
+            animation: connectionPulse 4s ease-in-out infinite;
         }
-        
-        .line-1 { top: 30%; left: -200px; transform: rotate(15deg); }
-        .line-2 { top: 70%; left: -200px; transform: rotate(-10deg); animation-delay: 4s; }
 
-        /* 新增：动画关键帧 */
+        .conn-1 { width: 150px; top: 25%; left: 15%; transform: rotate(25deg); }
+        .conn-2 { width: 200px; top: 65%; left: 25%; transform: rotate(-15deg); animation-delay: 2s; }
+        .conn-3 { width: 180px; top: 45%; left: 50%; transform: rotate(45deg); animation-delay: 1s; }
+
+        /* 时空波形图 */
+        .wave-form {
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background: transparent;
+            opacity: 0.3;
+        }
+
+        .wave-form::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, 
+                transparent 0%, 
+                rgba(59, 130, 246, 0.6) 25%, 
+                rgba(147, 197, 253, 0.8) 50%, 
+                rgba(59, 130, 246, 0.6) 75%, 
+                transparent 100%);
+            animation: waveMove 5s ease-in-out infinite;
+        }
+
+        .wave-1 { top: 35%; }
+        .wave-2 { top: 55%; animation-delay: 2.5s; }
+
+        /* 中心光晕效果 */
+        .center-glow {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, transparent 70%);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: glowPulse 6s ease-in-out infinite;
+        }
+
+        /* 角落装饰（科技感边框） */
+        .corner-decor {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            border: 2px solid rgba(59, 130, 246, 0.3);
+        }
+
+        .corner-tl { top: 30px; left: 30px; border-right: none; border-bottom: none; }
+        .corner-tr { top: 30px; right: 30px; border-left: none; border-bottom: none; }
+        .corner-bl { bottom: 30px; left: 30px; border-right: none; border-top: none; }
+        .corner-br { bottom: 30px; right: 30px; border-left: none; border-top: none; }
+
+        /* 动画关键帧 */
+        @keyframes gridMove {
+            0% { transform: perspective(500px) rotateX(60deg) translateY(0); }
+            100% { transform: perspective(500px) rotateX(60deg) translateY(60px); }
+        }
+
+        @keyframes streamFall {
+            0% { transform: translateY(-100px); opacity: 0; }
+            20% { opacity: 1; }
+            80% { opacity: 1; }
+            100% { transform: translateY(100vh); opacity: 0; }
+        }
+
         @keyframes floatNode {
-            0% { transform: translateY(0) translateX(0); opacity: 0; }
-            20% { opacity: 0.8; }
-            80% { opacity: 0.8; }
-            100% { transform: translateY(-100px) translateX(50px); opacity: 0; }
+            0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.6; }
+            25% { transform: translate(20px, -30px) scale(1.2); opacity: 1; }
+            50% { transform: translate(-10px, 20px) scale(0.9); opacity: 0.8; }
+            75% { transform: translate(15px, 10px) scale(1.1); opacity: 0.9; }
         }
 
-        @keyframes flowLine {
-            0% { left: -200px; opacity: 0; }
-            50% { opacity: 1; }
-            100% { left: 100%; opacity: 0; }
+        @keyframes connectionPulse {
+            0%, 100% { opacity: 0.3; width: 150px; }
+            50% { opacity: 0.8; width: 200px; }
         }
 
-        .hero-content { position: relative; z-index: 1; max-width: 900px; padding: 0 30px; }
-        .hero h1 { font-size: 3.0rem; margin-bottom: 20px; text-shadow: 2px 2px 8px rgba(0,0,0,0.4); letter-spacing: 3px;white-space: nowrap; }
-        .hero h2 { font-size: 1.5rem; margin-bottom: 25px; font-weight: 400; opacity: 0.95; }
-        .hero p { font-size: 1.2rem; margin-bottom: 35px; opacity: 0.9; line-height: 1.8; }
+        @keyframes waveMove {
+            0%, 100% { transform: translateX(-50px); }
+            50% { transform: translateX(50px); }
+        }
+
+        @keyframes glowPulse {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.15; }
+            50% { transform: translate(-50%, -50%) scale(1.3); opacity: 0.25; }
+        }
+
+        .hero-content { position: relative; z-index: 10; max-width: 900px; padding: 0 30px; }
+        .hero h1 { 
+            font-size: 2.4rem; 
+            margin-bottom: 20px; 
+            text-shadow: 0 0 30px rgba(59, 130, 246, 0.8), 2px 2px 8px rgba(0,0,0,0.4); 
+            letter-spacing: 2px; 
+            white-space: nowrap;
+        }
+        .hero h2 { font-size: 1.5rem; margin-bottom: 25px; font-weight: 400; opacity: 0.95; text-shadow: 0 0 20px rgba(59, 130, 246, 0.5); }
+        .hero p { font-size: 1.2rem; margin-bottom: 35px; opacity: 0.9; line-height: 1.8; text-shadow: 0 0 10px rgba(0,0,0,0.5); }
+
+        /* ==================== 响应式 ==================== */
+        @media (max-width: 900px) {
+            .grid-bg, .grid-bg-2 { background-size: 40px 40px; }
+            .center-glow { width: 400px; height: 400px; }
+        }
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 1.5rem; white-space: normal; }
+            .grid-bg, .grid-bg-2 { display: none; } /* 移动端简化背景 */
+            .corner-decor { display: none; }
+        }
+        html { scroll-behavior: smooth; }
 
         /* ==================== 教师团队 ==================== */
         .teachers { background: var(--white); }
@@ -321,25 +457,25 @@
             box-shadow: 0 15px 40px rgba(0,0,0,0.1); 
         }
         
-        /* 修改：确保图片容器和图片都不会溢出 */
+        /* 修改：固定图片容器高度，确保所有卡片图片区域一致 */
         .research-img-box {
             width: 100%;
+            height: 200px; /* 固定高度 */
             overflow: hidden;
             background: #f1f5f9;
             position: relative;
-            display: block;
         }
         
         .research-img { 
             width: 100%; 
-            max-width: 100%; /* 关键：确保不超过容器宽度 */
-            height: auto; 
-            display: block; /* 消除图片底部间隙 */
+            height: 100%; 
+            object-fit: cover; /* 关键：裁剪填充，统一尺寸 */
+            object-position: center;
             transition: 0.5s;
         }
         
         .research-card:hover .research-img { 
-            transform: scale(1.03); 
+            transform: scale(1.05); 
         }
 
         .research-content { 
@@ -470,14 +606,45 @@
 
 <!-- ==================== Hero 区域 ==================== -->
 <section id="home" class="hero">
-    <!-- 新增：背景动态装饰元素 -->
+    <!-- 炫酷时空数据背景 -->
     <div class="hero-bg-decoration">
+        <!-- 动态网格（时空坐标系） -->
+        <div class="grid-bg"></div>
+        <div class="grid-bg-2"></div>
+        
+        <!-- 中心光晕 -->
+        <div class="center-glow"></div>
+        
+        <!-- 时空数据流 -->
+        <div class="data-stream stream-1"></div>
+        <div class="data-stream stream-2"></div>
+        <div class="data-stream stream-3"></div>
+        <div class="data-stream stream-4"></div>
+        <div class="data-stream stream-5"></div>
+        <div class="data-stream stream-6"></div>
+        
+        <!-- 浮动数据节点 -->
         <div class="data-node node-1"></div>
         <div class="data-node node-2"></div>
         <div class="data-node node-3"></div>
         <div class="data-node node-4"></div>
-        <div class="data-line line-1"></div>
-        <div class="data-line line-2"></div>
+        <div class="data-node node-5"></div>
+        <div class="data-node node-6"></div>
+        
+        <!-- 节点连接线 -->
+        <div class="node-connection conn-1"></div>
+        <div class="node-connection conn-2"></div>
+        <div class="node-connection conn-3"></div>
+        
+        <!-- 时空波形 -->
+        <div class="wave-form wave-1"></div>
+        <div class="wave-form wave-2"></div>
+        
+        <!-- 科技感角落装饰 -->
+        <div class="corner-decor corner-tl"></div>
+        <div class="corner-decor corner-tr"></div>
+        <div class="corner-decor corner-bl"></div>
+        <div class="corner-decor corner-br"></div>
     </div>
     <div class="hero-content">
         <h1>合肥工业大学时空数据智能实验室</h1>
@@ -1001,6 +1168,7 @@
                 </div>
                 <a href="#" target="_blank" class="partner-link">英特灵达</a>
             </div>
+
 
 
 
