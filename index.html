@@ -321,18 +321,20 @@
             box-shadow: 0 15px 40px rgba(0,0,0,0.1); 
         }
         
-        /* 修改：固定宽度，高度自适应，保留原始比例 */
+        /* 修改：确保图片容器和图片都不会溢出 */
         .research-img-box {
             width: 100%;
             overflow: hidden;
             background: #f1f5f9;
             position: relative;
+            display: block;
         }
         
         .research-img { 
             width: 100%; 
-            height: auto; /* 高度自适应，保持原始比例 */
-            display: block;
+            max-width: 100%; /* 关键：确保不超过容器宽度 */
+            height: auto; 
+            display: block; /* 消除图片底部间隙 */
             transition: 0.5s;
         }
         
@@ -375,7 +377,6 @@
             text-align: justify; 
             flex: 1; 
         }
-
         /* ==================== 合作企业模块 (图片优化) ==================== */
         .partners { background: var(--white); }
         .partners-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 40px; align-items: center; justify-items: center; }
@@ -1000,6 +1001,7 @@
                 </div>
                 <a href="#" target="_blank" class="partner-link">英特灵达</a>
             </div>
+
 
 
 
