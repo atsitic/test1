@@ -457,25 +457,28 @@
             box-shadow: 0 15px 40px rgba(0,0,0,0.1); 
         }
         
-        /* 修改：固定图片容器高度，确保所有卡片图片区域一致 */
+        /* 【修改点 1】固定图片容器高度，添加背景色 */
         .research-img-box {
             width: 100%;
             height: 200px; /* 固定高度 */
             overflow: hidden;
-            background: #f1f5f9;
+            background: #f1f5f9; /* 添加背景色，防止图片缩放后留白难看 */
             position: relative;
+            display: flex; /* 使用 flex 居中图片 */
+            align-items: center;
+            justify-content: center;
         }
         
+        /* 【修改点 2】修改图片填充模式为 contain (包含) */
         .research-img { 
             width: 100%; 
             height: 100%; 
-            object-fit: cover; /* 关键：裁剪填充，统一尺寸 */
-            object-position: center;
+            object-fit: contain; /* 关键修改：完整显示图片，不裁剪，自动缩放 */
             transition: 0.5s;
         }
         
         .research-card:hover .research-img { 
-            transform: scale(1.05); 
+            transform: scale(1.05); /* 鼠标悬停时轻微放大 */
         }
 
         .research-content { 
@@ -512,6 +515,54 @@
             line-height: 1.7; 
             text-align: justify; 
             flex: 1; 
+        }
+        /* ==================== 合作企业模块 (图片优化) ==================== */
+        .partners { background: var(--white); }
+        .partners-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 40px; align-items: center; justify-items: center; }
+        
+        .partner-card {
+            text-align: center;
+            transition: 0.3s;
+            padding: 20px;
+            border-radius: 15px;
+            border: 1px solid #e2e8f0;
+            background: #fff;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .partner-card:hover { 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1); 
+            transform: translateY(-5px);
+            border-color: var(--primary-color);
+        }
+        /* 修改：Logo 容器固定大小，内部居中 */
+        .partner-img-box {
+            width: 140px;
+            height: 100px; /* 固定高度，适应横向 Logo */
+            margin: 0 auto 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #fff; /* 保持白色背景以防透明图 */
+        }
+        .partner-img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain; /* 关键：完整显示，不裁剪 */
+        }
+        
+        .partner-link {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--secondary-color);
+            display: block;
+            margin-top: 10px;
+        }
+        .partner-link:hover {
+            color: var(--primary-color);
+            text-decoration: underline;
         }
         /* ==================== 合作企业模块 (图片优化) ==================== */
         .partners { background: var(--white); }
@@ -1168,6 +1219,7 @@
                 </div>
                 <a href="#" target="_blank" class="partner-link">英特灵达</a>
             </div>
+
 
 
 
